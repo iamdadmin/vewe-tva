@@ -10,9 +10,9 @@ Supporting the current version of PHP, less one, as a minimum requirement, to ke
 
 Based on semantic versioning, with the following constraints
 
-1.x.x releases support PHP8.4, PHP8.5
-2.x.x releases support PHP8.5, PHP8.6
-3.x.x releases support PHP8.6, PHP-Next (tbc)
+- 1.x.x releases support PHP8.4, PHP8.5
+- 2.x.x releases support PHP8.5, PHP8.6
+- 3.x.x releases support PHP8.6, PHP-Next (tbc)
 
 Major point releases may introduce breaking changes, which will be in the release notes.
 
@@ -23,15 +23,17 @@ Minor point releases should be non-breaking changes and fixes.
 You can install the package via composer:
 
 ```bash
-composer require feature-ninja/cva
+composer require vewe/classvariance
 ```
 
 ## Usage
 
-```php
-use FeatureNinja\Cva\ClassVarianceAuthority;
+### Cv, with slots, akin to Tailwind-Variants
 
-$button = ClassVarianceAuthority::new(
+```php
+use Vewe\ClassVariance\Cv;
+
+$button = Cv::new(
     ['font-semibold', 'border', 'rounded'],
     [
         'variants' => [
@@ -57,10 +59,20 @@ $button = ClassVarianceAuthority::new(
         ],
     ],
 );
+```
 
-# Or by using the cva helper function
+```html
+<button class="<?= $button(); ?>">Submit</button>
 
-$button = fn\cva(
+<button class="<?= $button(['intent' => 'secondary', 'size' => 'small']); ?>">Submit</button>
+```
+
+### Cv utility, without slots
+
+```php
+use Vewe\ClassVariance\Cv;
+
+$button = Cv::new(
     ['font-semibold', 'border', 'rounded'],
     [
         'variants' => [
