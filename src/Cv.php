@@ -23,8 +23,8 @@ final readonly class Cv
      * @param string|array<array-key, string|array<array-key, string>> $base
      * @param array{
      *     variants?: array<array-key, array<array-key, string|array<array-key, string>|array<array-key, string|array<array-key, string>>>>,
-     *     compoundVariants?: array<array-key, array<array-key, string|array<array-key, string>>>,
-     *     defaultVariants?: array<array-key, string>
+     *     compoundVariants?: array<array-key, array<array-key, string|bool|array<array-key, string>>>,
+     *     defaultVariants?: array<array-key, string|bool>
      * } $processorCollection
      */
     public static function new(string|array $base, array $processorCollection): self
@@ -36,7 +36,7 @@ final readonly class Cv
     }
 
     /**
-     * @param array<array-key, string> $props
+     * @param array<array-key, string|bool> $props
      * @param string $slot
      */
     public function __invoke(array $props = [], string $slot = ''): string

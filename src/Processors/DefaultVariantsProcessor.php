@@ -7,14 +7,14 @@ namespace Vewe\ClassVariance\Processors;
 final readonly class DefaultVariantsProcessor
 {
     /**
-     * @param array<array-key, string> $processorCollection
+     * @param array<array-key, string|bool> $processorCollection
      */
     private function __construct(
         private array $processorCollection,
     ) {}
 
     /**
-     * @param array<array-key, string> $processorCollection
+     * @param array<array-key, string|bool> $processorCollection
      */
     public static function of(array $processorCollection): self
     {
@@ -22,8 +22,8 @@ final readonly class DefaultVariantsProcessor
     }
 
     /**
-     * @param array<array-key, string> $props
-     * @return array<array-key, string>
+     * @param array<array-key, string|bool> $props
+     * @return array<array-key, string|bool>
      */
     public function merge(array $props): array
     {

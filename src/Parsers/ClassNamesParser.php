@@ -14,11 +14,16 @@ final readonly class ClassNamesParser
     ) {}
 
     /**
-     * @param array<array-key, array<array-key, string>|string>|string $classNames
+     * @param array<array-key, array<array-key, string|bool>|string|bool>|string|bool $classNames
      * @param string $slot
      */
-    public static function of(string|array $classNames, string $slot = ''): self
+    public static function of(string|array|bool $classNames, string $slot = ''): self
     {
+        // Convert boolean to empty string (booleans are not valid class names)
+        if (is_bool($classNames)) {
+            return new self(new StringCollection([]));
+        }
+
         $items = [];
 
         if (is_array($classNames)) {
@@ -28,6 +33,9 @@ final readonly class ClassNamesParser
                 // Handle case where slot value is a string
                 if (is_string($extracted)) {
                     $items = explode(' ', $extracted);
+                } elseif (is_bool($extracted)) {
+                    // Boolean values are not valid class names, treat as empty
+                    $items = [];
                 } else {
                     $items = $extracted;
                 }
