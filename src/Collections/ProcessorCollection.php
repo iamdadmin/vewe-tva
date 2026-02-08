@@ -18,9 +18,9 @@ final readonly class ProcessorCollection
 
     /**
      * @param array{
-     *     variants?: array<array-key, array<array-key, string|array<array-key, string>|array<array-key, string|array<array-key, string>>>>,
-     *     compoundVariants?: array<array-key, array<array-key, string|array<array-key, string>>>,
-     *     defaultVariants?: array<array-key, string>
+     *     variants?: array<array-key, array<array-key, string|bool|array<array-key, string>|array<array-key, string|bool|array<array-key, string>>>>,
+     *     compoundVariants?: array<array-key, array<array-key, string|bool|array<array-key, string>>>,
+     *     defaultVariants?: array<array-key, string|bool>
      * } $processorCollection
      */
     public static function of(array $processorCollection): self

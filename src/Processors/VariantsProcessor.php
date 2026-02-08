@@ -9,14 +9,14 @@ use Vewe\ClassVariance\Parsers\ClassNamesParser;
 final readonly class VariantsProcessor
 {
     /**
-     * @param array<array-key, array<array-key, string|array<array-key, string>|array<array-key, string|array<array-key, string>>>> $processorCollection
+     * @param array<array-key, array<array-key, string|bool|array<array-key, string>|array<array-key, string|bool|array<array-key, string>>>> $processorCollection
      */
     private function __construct(
         private array $processorCollection,
     ) {}
 
     /**
-     * @param array<array-key, array<array-key, string|array<array-key, string>|array<array-key, string|array<array-key, string>>>> $processorCollection
+     * @param array<array-key, array<array-key, string|bool|array<array-key, string>|array<array-key, string|bool|array<array-key, string>>>> $processorCollection
      */
     public static function of(array $processorCollection): self
     {
@@ -24,7 +24,8 @@ final readonly class VariantsProcessor
     }
 
     /**
-     * @param array<array-key, string> $props
+     * @param array<array-key, string|bool> $props
+     * @return ClassNamesParser
      */
     public function resolve(array $props, string $slot = ''): ClassNamesParser
     {
