@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vewe\Mcva\Parser;
+namespace Vewe\ClassVariance\Collections;
 
 final readonly class StringCollection
 {

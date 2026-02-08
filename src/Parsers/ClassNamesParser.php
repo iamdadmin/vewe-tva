@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Vewe\Mcva\Parser;
+namespace Vewe\ClassVariance\Parsers;
 
-final readonly class ClassNames
+use Vewe\ClassVariance\Collections\StringCollection;
+
+final readonly class ClassNamesParser
 {
     private function __construct(
         private StringCollection $items = new StringCollection(),
@@ -47,7 +49,7 @@ final readonly class ClassNames
         return new self();
     }
 
-    public function concat(ClassNames $classNames): self
+    public function concat(ClassNamesParser $classNames): self
     {
         return new self(
             $this->items->concat($classNames->items),

@@ -2,35 +2,45 @@
 
 declare(strict_types=1);
 
-namespace Vewe\Mcva\Tests;
+namespace Vewe\ClassVariance\Tests;
 
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Vewe\Mcva\Mcva;
+use Vewe\ClassVariance\Cv;
 
-final class McvaWithoutSlotTest extends TestCase
+final class CvWithSlotTest extends TestCase
 {
     #[Test]
-    public function mcva_without_slot(): void
+    public function cv_with_slot_test(): void
     {
-        $button = Mcva::new(
-            ['font-semibold', 'border', 'rounded'],
+        $button = Cv::new(
+            ['base' => ['font-semibold', 'border', 'rounded']],
             [
                 'variants' => [
                     'intent' => [
-                        'primary' => ['bg-blue-500', 'text-white', 'border-transparent', 'hover:bg-blue-600'],
-                        'secondary' => ['bg-white', 'text-gray-800', 'border-gray-400', 'hover:bg-gray-100'],
+                        'primary' => [
+                            'base' => ['bg-blue-500', 'text-white', 'border-transparent', 'hover:bg-blue-600'],
+                        ],
+                        'secondary' => [
+                            'base' => ['bg-white', 'text-gray-800', 'border-gray-400', 'hover:bg-gray-100'],
+                        ],
                     ],
                     'size' => [
-                        'small' => ['text-sm', 'py-1', 'px-2'],
-                        'medium' => ['text-base', 'py-2', 'px-4'],
+                        'small' => [
+                            'base' => ['text-sm', 'py-1', 'px-2'],
+                        ],
+                        'medium' => [
+                            'base' => ['text-base', 'py-2', 'px-4'],
+                        ],
                     ],
                 ],
                 'compoundVariants' => [
                     [
                         'intent' => 'primary',
                         'size' => 'medium',
-                        'class' => 'uppercase',
+                        'class' => [
+                            'base' => 'uppercase',
+                        ],
                     ],
                 ],
                 'defaultVariants' => [

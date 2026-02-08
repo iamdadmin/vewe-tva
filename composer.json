@@ -1,6 +1,6 @@
 {
-    "name": "vewe/mcva",
-    "description": "Vewe Merge Class Variance Authority - a combined implementation of CVA and twMerge for PHP",
+    "name": "vewe/classvariance",
+    "description": "Vewe ClassVariance, an all-PHP combined implementation of Class Variance Authority, twMerge, and Tailwind-Variants",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -13,10 +13,10 @@
         "cva",
         "tailwind-variants"
     ],
-    "homepage": "https://github.com/iamdadmin/vewe-tva",
+    "homepage": "https://github.com/iamdadmin/vewe-classvariance",
     "support": {
-        "issues": "https://github.com/iamdadmin/vewe-tva/issues",
-        "source": "https://github.com/iamdadmin/vewe-tva"
+        "issues": "https://github.com/iamdadmin/vewe-classvariance/issues",
+        "source": "https://github.com/iamdadmin/vewe-classvariance"
     },
     "authors": [
         {
@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Vewe\\Mcva\\": "src/"
+            "Vewe\\ClassVariance\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Vewe\\Mcva\\Tests\\": "tests/"
+            "Vewe\\ClassVariance\\Tests\\": "tests/"
         }
     },
     "scripts": {
