@@ -28,7 +28,7 @@ composer require vewe/classvariance
 
 ## Usage
 
-### Cv, with slots, akin to Tailwind-Variants
+### `Cv`, with slots, akin to Tailwind-Variants
 
 You can declare your classes as a single string, space delimited, or you can provided it as an array of strings, or a mix of the two methods, as suits your needs.
 
@@ -48,11 +48,19 @@ use Vewe\ClassVariance\Cv;
         'variants' => [
             'color' => [
                 'primary' => [
-                    'base' => ['bg-blue-500', 'border-transparent', 'hover:bg-blue-600'],
+                    'base' => [
+                        'bg-blue-500',
+                        'border-transparent',
+                        'hover:bg-blue-600'
+                    ],
                     'label' => ['text-white'],
                 ],
                 'secondary' => [
-                    'base' => ['bg-white', 'border-gray-400', 'hover:bg-gray-100'],
+                    'base' => [
+                        'bg-white',
+                        'border-gray-400',
+                        'hover:bg-gray-100'
+                    ],
                     'label' => ['text-black'],
                 ],
             ],
@@ -97,7 +105,11 @@ You can use named properties or you can pass an empty array for $props.
 You can also take advantage of Tailwind-Variants style declarations, for your component to have multiple sub-components.
 ```html
 <button class="<?= $button(props: ['color' => 'secondary', 'size' => 'small']); ?>">
-    <span class="<?= $button(props: ['color' => 'secondary', 'size' => 'small'], slot: 'label'); ?>">Submit</span>
+    <span class="<?= $button(
+        props: ['color' => 'secondary', 'size' => 'small'],
+        slot: 'label'); ?>">
+    Submit
+    </span>
 </button>
 ```
 
@@ -106,7 +118,7 @@ You can also take advantage of Tailwind-Variants style declarations, for your co
 > Take a look at [vewe/ui](https://github.com/iamdadmin/vewe)!
 > Ready for use with TempestPHP or adapt to anything you like.
 
-### Cv utility, without slots
+### `Cv`, without slots
 
 When not using slots, simply omit them from your definitions entirely.
 
@@ -118,7 +130,12 @@ $button = Cv::new(
     [
         'variants' => [
             'color' => [
-                'primary' => ['bg-blue-500', 'text-white', 'border-transparent', 'hover:bg-blue-600'],
+                'primary' => [
+                    'bg-blue-500',
+                    'text-white',
+                    'border-transparent',
+                    'hover:bg-blue-600'
+                ],
                 'secondary' => 'bg-white text-gray-800 border-gray-400 hover:bg-gray-100',
             ],
             'size' => [
@@ -144,9 +161,9 @@ Equally, do not pass the slot property at all.
 ```html
 <button class="<?= $button(); ?>">The</button>
 
-<button class="<?= $button(['color' => 'secondary', 'size' => 'small']); ?>">Same</button>
+<button class="<?= $button(['color' => 'primary', 'size' => 'medium']); ?>">Same</button>
 
-<button class="<?= $button(props: ['color' => 'secondary', 'size' => 'small']); ?>">Button</button>
+<button class="<?= $button(props: ['color' => 'primary', 'size' => 'medium']); ?>">Button</button>
 ```
 
 ### Merging additional class data
@@ -154,17 +171,35 @@ Equally, do not pass the slot property at all.
 Whether or not you implement slots configuration, if you wish to pass additional classes to be merged one-off into a specific button, you can pass it in either `class` or `className` within `$props`.
 
 ```html
-<button class="<?= $button(props: ['color' => 'secondary', 'size' => 'small'], slot: 'base'); ?>">
-    <span class="<?= $button(props: ['color' => 'secondary', 'size' => 'small'], slot: 'label'); ?>">Submit</span>
+<button
+    class="<?= $button(props: ['color' => 'secondary', 'size' => 'small'], slot: 'base'); ?>">
+    <span
+        class="<?= $button(
+            props: ['color' => 'secondary', 'size' => 'small'],
+            slot: 'label'); ?>">
+    Submit
+    </span>
 </button>
 
 <button class="<?= $button(props: ['color' => 'secondary', 'size' => 'small']); ?>">Submit</button>
 
-<button class="<?= $button(props: ['class' => 'border-red-600', 'color' => 'secondary', 'size' => 'small'], slot: 'base'); ?>">
-    <span class="<?= $button(props: ['class' => 'text-italic', 'color' => 'secondary', 'size' => 'small'], slot: 'label'); ?>">Red-border Italic Submit</span>
+<button
+    class="<?= $button(
+        props: ['class' => 'border-red-600', 'color' => 'secondary', 'size' => 'small'],
+        slot: 'base'); ?>">
+    <span
+        class="<?= $button(
+            props: ['class' => 'text-italic', 'color' => 'secondary', 'size' => 'small'],
+            slot: 'label'); ?>">
+    Red-border Italic Submit
+    </span>
 </button>
 
-<button class="<?= $button(props: ['class' => 'border-red-600 text-italic', 'color' => 'secondary', 'size' => 'small']); ?>">Red-border Italic Submit</button>
+<button
+    class="<?= $button(
+        props: ['class' => 'border-red-600 text-italic', 'color' => 'secondary', 'size' => 'small']); ?>">
+Red-border Italic Submit
+</button>
 ```
 
 ## Testing
