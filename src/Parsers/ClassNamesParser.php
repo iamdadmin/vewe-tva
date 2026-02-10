@@ -68,7 +68,7 @@ final readonly class ClassNamesParser
     {
         return $this->items
             ->unique()
-            ->filter(fn (string $value) => trim($value) !== '')
+            ->filter(static fn (string $value) => trim($value) !== '')
             ->implode(' ');
     }
 }

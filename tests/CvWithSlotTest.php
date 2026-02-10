@@ -20,7 +20,7 @@ final class CvWithSlotTest extends TestCase
             ],
             [
                 'variants' => [
-                    'variant' => [
+                    'color' => [
                         'primary' => [
                             'base' => ['bg-blue-500', 'border-transparent', 'hover:bg-blue-600'],
                             'label' => ['text-white'],
@@ -43,7 +43,7 @@ final class CvWithSlotTest extends TestCase
                 ],
                 'compoundVariants' => [
                     [
-                        'variant' => 'primary',
+                        'color' => 'primary',
                         'size' => 'medium',
                         'class' => [
                             'label' => 'uppercase',
@@ -51,7 +51,7 @@ final class CvWithSlotTest extends TestCase
                     ],
                 ],
                 'defaultVariants' => [
-                    'variant' => 'primary',
+                    'color' => 'primary',
                     'size' => 'medium',
                 ],
             ],
@@ -69,32 +69,32 @@ final class CvWithSlotTest extends TestCase
 
         $this->assertSame(
             'font-semibold border rounded bg-white border-gray-400 hover:bg-gray-100 py-1 px-2',
-            $button(props: ['variant' => 'secondary', 'size' => 'small'], slot: 'base'),
+            $button(props: ['color' => 'secondary', 'size' => 'small'], slot: 'base'),
         );
 
         $this->assertSame(
             'text-black text-sm',
-            $button(props: ['variant' => 'secondary', 'size' => 'small'], slot: 'label'),
+            $button(props: ['color' => 'secondary', 'size' => 'small'], slot: 'label'),
         );
 
         $this->assertSame(
             'font-semibold border rounded bg-white border-gray-400 hover:bg-gray-100 py-1 px-2 focus:ring-2',
-            $button(props: ['class' => 'focus:ring-2', 'className' => 'focus:ring-4', 'variant' => 'secondary', 'size' => 'small'], slot: 'base'),
+            $button(props: ['class' => 'focus:ring-2', 'className' => 'focus:ring-4', 'color' => 'secondary', 'size' => 'small'], slot: 'base'),
         );
 
         $this->assertSame(
             'text-black text-sm',
-            $button(props: ['variant' => 'secondary', 'size' => 'small'], slot: 'label'),
+            $button(props: ['color' => 'secondary', 'size' => 'small'], slot: 'label'),
         );
 
         $this->assertSame(
             'font-semibold border rounded bg-white border-gray-400 hover:bg-gray-100 py-1 px-2 focus:ring-2',
-            $button(props: ['className' => 'focus:ring-2', 'variant' => 'secondary', 'size' => 'small'], slot: 'base'),
+            $button(props: ['className' => 'focus:ring-2', 'color' => 'secondary', 'size' => 'small'], slot: 'base'),
         );
 
         $this->assertSame(
             'text-black text-sm',
-            $button(props: ['variant' => 'secondary', 'size' => 'small'], slot: 'label'),
+            $button(props: ['color' => 'secondary', 'size' => 'small'], slot: 'label'),
         );
 
         $this->assertSame(

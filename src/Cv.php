@@ -51,7 +51,7 @@ final readonly class Cv
         // If $base has multiple slots defined, and $slot is not provided, throw exception
         if ($slot === '' && is_array($this->base) && count($this->base) > 1 && ! isset($this->base[0])) {
             throw new InvalidArgumentException(
-                'Multiple slots detected in base array but no $slot parameter provided. ' . 'Please specify a slot parameter when calling the component. ' . 'Available slots: '
+                'Multiple slots detected in base array but no $slot parameter provided. Please specify a slot parameter when calling the component. ' . 'Available slots: '
                     . implode(', ', array_keys($this->base)),
             );
         }
