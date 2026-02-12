@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Vewe\ClassVariance;
 
 use InvalidArgumentException;
+use TalesFromADev\TailwindMerge\TailwindMerge;
 use Vewe\ClassVariance\Collections\ProcessorCollection;
 use Vewe\ClassVariance\Parsers\ClassNamesParser;
 
@@ -56,14 +57,19 @@ final readonly class Cv
             );
         }
 
-        $additionalClassNames = ClassNamesParser::of($props['class'] ?? $props['className'] ?? '', $slot);
+        $additionalClassNames = ClassNamesParser::of($props['class'] ?? $props['className'] ?? '', '');
 
         $baseClassNames = ClassNamesParser::of($this->base, $slot);
 
-        return $baseClassNames
-            ->concat($this->processorCollection->variants->resolve($props, $slot))
-            ->concat($this->processorCollection->compoundVariants->resolve($props, $slot))
-            ->concat($additionalClassNames)
-            ->toString();
+        $tw = new TailwindMerge();
+
+        return $tw->merge(
+            $baseClassNames
+                ->concat($this->processorCollection->variants->resolve($props, $slot))
+                ->concat($this->processorCollection->compoundVariants->resolve($props, $slot))
+                ->concat($additionalClassNames)
+                ->toString(),
+            $additionalClassNames->toString(),
+        );
     }
 }

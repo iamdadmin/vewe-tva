@@ -24,11 +24,12 @@
         }
     ],
     "require": {
-        "php": "8.4.* || 8.5.*"
+        "php": "8.4.* || 8.5.*",
+        "tales-from-a-dev/tailwind-merge-php": "^0.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^12.0",
-        "carthage-software/mago": "^1"
+        "carthage-software/mago": ">=1"
     },
     "autoload": {
         "psr-4": {
